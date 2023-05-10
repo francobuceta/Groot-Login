@@ -1,6 +1,11 @@
 import Form from "./Form.jsx";
+import { useState } from "react";
 
 const GrootDraw = () => {
+
+    const [emailText, setEmailText] = useState(0);
+    const [passwordFocus, setPasswordFocus] = useState(false);
+
     return (
         <>
             <section className="container">
@@ -36,7 +41,7 @@ const GrootDraw = () => {
                 </div>
             </section>
 
-            <Form />
+            <Form setEmailText={setEmailText} passwordFocus={passwordFocus} setPasswordFocus={setPasswordFocus} />
         </>
     )
 }
