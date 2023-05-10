@@ -1,9 +1,13 @@
-const Form = ({setEmailText, passwordFocus, setPasswordFocus}) => {
+const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) => {
 
     const emailHandler = (e) => {
         setEmailText(e.target.value.length);
     }
     
+    const emailFocusFn = () => {
+        setEmailFocus(true);
+    }
+
     const passwordHandler = () => {
         setPasswordFocus(true);
         console.log(passwordFocus);
@@ -14,7 +18,8 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus}) => {
             <form action="" className="form">
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} />
+                    <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} 
+                        onFocus={emailFocusFn} />
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>

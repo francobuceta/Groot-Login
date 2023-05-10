@@ -1,11 +1,31 @@
 import Form from "./Form.jsx";
-import { useState } from "react";
-import styled, { keyframes } from 'styled-components';
+import { useState, useEffect, useRef } from "react";
+import styled, { keyframes, css } from 'styled-components';
 
 const GrootDraw = () => {
 
     const [emailText, setEmailText] = useState(0);
+    const [emailFocus, setEmailFocus] = useState(false);
     const [passwordFocus, setPasswordFocus] = useState(false);
+    const [translateValueY, setTranslateValueY] = useState(0);
+    const [translateValueX, setTranslateValueX] = useState(0);
+    const [prevTranslateValueY, setPrevTranslateValueY] = useState();
+    const [prevTranslateValueX, setPrevTranslateValueX] = useState(0);
+
+    useEffect(() => {
+        if (emailFocus) {
+            setTranslateValueY(8);
+            setTranslateValueX(-10);
+
+            setPrevTranslateValueX(8);
+            setPrevTranslateValueY(10);
+            console.log(prevTranslateValueX);
+            if(emailText === 2) {
+                setTranslateValueY(15);
+                setTranslateValueX(-1);
+            }
+        }
+    }, [emailFocus, emailText, prevTranslateValueY, prevTranslateValueX, translateValueY, translateValueX]);
 
     return (
         <>
@@ -22,8 +42,18 @@ const GrootDraw = () => {
                 <div className="head">
                     <div className="face">
                         <div className="eyes">
-                            <Eyes /* className="eyes_left" */></Eyes>
-                            <Eyes /* className="eyes_right" */></Eyes>
+                            <Eyes emailText={emailText}
+                                emailFocus={emailFocus}
+                                prevTranslateValueX={prevTranslateValueX}
+                                prevTranslateValueY={prevTranslateValueY}
+                                translateValueX={translateValueX}
+                                translateValueY={translateValueY} />
+                            <Eyes emailText={emailText}
+                                emailFocus={emailFocus}
+                                prevTranslateValueX={prevTranslateValueX}
+                                prevTranslateValueY={prevTranslateValueY}
+                                translateValueX={translateValueX}
+                                translateValueY={translateValueY} />
                         </div>
 
                         <div className="mouth">
@@ -42,39 +72,41 @@ const GrootDraw = () => {
                 </div>
             </section>
 
-            <Form setEmailText={setEmailText} passwordFocus={passwordFocus} setPasswordFocus={setPasswordFocus} />
+            <Form setEmailText={setEmailText} passwordFocus={passwordFocus} setPasswordFocus={setPasswordFocus} setEmailFocus={setEmailFocus} />
         </>
     )
 }
 
-const moveEyes = keyframes `
-from {
-    transform: translatey(0px);
-	transform: translatex(0px);
-}
-to {
-    transform: translatey(8px);
-	transform: translatex(8px);
-}
-`;
-
-const Eyes = styled.div `
+const Eyes = styled.div`
     width: 2rem;
-	height: 2rem;
-	background-color: var(--dark);
-	border-radius: 50%;
-	position: relative;
+    height: 2rem;
+    background-color: var(--dark);
+    border-radius: 50%;
+    position: relative;
 
     &::after {
         content: "";
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: ${({prevTranslateValueY}) => prevTranslateValueY > 0 ? `${prevTranslateValueY}px` : "10px"};
+        right: ${({prevTranslateValueX}) => prevTranslateValueX > 0 ? `${prevTranslateValueX}px` : "10px"};
         width: 9px;
         height: 9px;
         border-radius: 50%;
         background-color: #fff;
-        animation: ${moveEyes} 1s var(--cubic) 1;
+        animation: ${({ emailFocus, translateValueY, translateValueX }) =>
+            emailFocus &&
+            css`
+            ${moveEyes1(translateValueY, translateValueX)} 1s var(--cubic) forwards;
+            `};
+    }
+`;
+
+const moveEyes1 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
     }
 `;
 
