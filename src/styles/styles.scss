@@ -1,0 +1,246 @@
+:root {
+	--background-color: #ede6cb;
+	--light-brown: #9b6e42;
+	--dark-brown: #563414;
+	--dark: #2d2d2c;
+	--tongue: #ff5a5b;
+	--cubic: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+html {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--background-color);
+	height: 100vh;
+}
+
+#root {
+	display: grid;
+	place-items: center;
+    grid-template-columns: 1fr 1fr;
+	margin-top: 100px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.head {
+	background-color: var(--light-brown);
+	width: 13rem;
+	height: 15rem;
+	border-bottom-left-radius: 3rem;
+	border-bottom-right-radius: 3rem;
+	border-left: 1rem solid var(--dark-brown);
+	border-right: 1rem solid var(--dark-brown);
+	border-bottom: 1rem solid var(--dark-brown);
+	box-shadow: 10px 15px 2px rgba(0, 0, 0, 0.2);
+}
+.hair {
+	position: absolute;
+	left: 0;
+
+	&-1 {
+		width: 1rem;
+		height: 2rem;
+		background-color: var(--light-brown);
+		border-left: 1rem solid var(--dark-brown);
+		border-right: 1rem solid var(--dark-brown);
+		border-top: 1rem solid var(--dark-brown);
+		position: absolute;
+		top: -2rem;
+	}
+	&-2 {
+		width: 2.5rem;
+		height: 1rem;
+		background-color: var(--dark-brown);
+		position: absolute;
+		left: 3rem;
+		top: -15px;
+	}
+	&-3 {
+		width: 2rem;
+		height: 3rem;
+		background-color: var(--light-brown);
+		border-left: 1rem solid var(--dark-brown);
+		border-top: 1rem solid var(--dark-brown);
+		position: absolute;
+		top: -2rem;
+		left: 5.5rem;
+	}
+	&-4 {
+		width: 1.5rem;
+		height: 4rem;
+		background-color: var(--light-brown);
+		border-left: 1rem solid var(--dark-brown);
+		border-right: 1rem solid var(--dark-brown);
+		border-top: 1rem solid var(--dark-brown);
+		position: absolute;
+		top: -4rem;
+		left: 8rem;
+	}
+	&-5 {
+		width: 2.5rem;
+		height: 1.8rem;
+		background-color: var(--light-brown);
+		border-right: 1rem solid var(--dark-brown);
+		border-top: 1rem solid var(--dark-brown);
+		position: absolute;
+		top: -2rem;
+		left: 11.5rem;
+	}
+}
+.neck {
+	width: 1.75rem;
+	height: 3.5rem;
+	background-color: var(--light-brown);
+	border-left: 0.75rem solid var(--dark-brown);
+	border-right: 0.75rem solid var(--dark-brown);
+	z-index: 2;
+	margin-top: -16px;
+}
+.shoulder {
+	background-color: var(--light-brown);
+	width: 12rem;
+	height: 3rem;
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+	border-left: 1rem solid var(--dark-brown);
+	border-right: 1rem solid var(--dark-brown);
+	border-top: 1rem solid var(--dark-brown);
+	margin-top: -1rem;
+	box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.2);
+}
+.body {
+	width: 14rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--light-brown);
+	box-shadow: 10px 10px 2px rgba(0, 0, 0, 0.2);
+
+	& > * {
+		background-color: var(--light-brown);
+	}
+	.left-arm,
+	.right-arm {
+		width: 1.5rem;
+		height: 5rem;
+		border-left: 1rem solid var(--dark-brown);
+		border-right: 1rem solid var(--dark-brown);
+	}
+}
+.face {
+	width: 70%;
+	height: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	padding-bottom: 2rem;
+}
+.eyes {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+
+	&_right,
+	&_left {
+		width: 2rem;
+		height: 2rem;
+		background-color: var(--dark);
+		border-radius: 50%;
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			width: 9px;
+			height: 9px;
+			border-radius: 50%;
+			background-color: #fff;
+			animation: moveEyes 1s var(--cubic) infinite;
+		}
+	}
+}
+.mouth {
+	width: 4rem;
+	height: 2.5rem;
+	background-color: var(--dark);
+	border-radius: 35px 35px 100px 100px;
+	margin-top: 1rem;
+	position: relative;
+
+	.tongue {
+		width: 2rem;
+		height: 1rem;
+		background-color: var(--tongue);
+		border-radius: 15px 15px 50px 50px;
+		position: absolute;
+		bottom: 15%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+// eyes animation
+@keyframes moveEyes {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(8px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+//Formulario
+
+.form_container {
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+}
+
+.form_input {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 5px;
+    font-family: 'Inter', sans-serif;
+}
+
+.form_submit {
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #639;
+    border: none;   
+    cursor: pointer;
+}
