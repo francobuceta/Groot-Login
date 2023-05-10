@@ -1,5 +1,6 @@
 import Form from "./Form.jsx";
 import { useState } from "react";
+import styled, { keyframes } from 'styled-components';
 
 const GrootDraw = () => {
 
@@ -21,8 +22,8 @@ const GrootDraw = () => {
                 <div className="head">
                     <div className="face">
                         <div className="eyes">
-                            <div className="eyes_left"></div>
-                            <div className="eyes_right"></div>
+                            <Eyes /* className="eyes_left" */></Eyes>
+                            <Eyes /* className="eyes_right" */></Eyes>
                         </div>
 
                         <div className="mouth">
@@ -45,5 +46,36 @@ const GrootDraw = () => {
         </>
     )
 }
+
+const moveEyes = keyframes `
+from {
+    transform: translatey(0px);
+	transform: translatex(0px);
+}
+to {
+    transform: translatey(8px);
+	transform: translatex(8px);
+}
+`;
+
+const Eyes = styled.div `
+    width: 2rem;
+	height: 2rem;
+	background-color: var(--dark);
+	border-radius: 50%;
+	position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background-color: #fff;
+        animation: ${moveEyes} 1s var(--cubic) 1;
+    }
+`;
 
 export default GrootDraw;
