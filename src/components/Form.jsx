@@ -16,12 +16,12 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) =>
     return (
         <section className="form_container">
             <form action="" className="form">
-                <div class="form_input-container">
+                <div className="form_input-container">
                     <label htmlFor="email">Email</label>
                     <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} 
                         onFocus={emailFocusFn} />
                 </div>
-                <div class="form_input-container">
+                <div className="form_input-container">
                     <label htmlFor="password">Password</label>
                     <input type="text" name="password" className="form_input" onFocus={passwordHandler} />
                 </div>

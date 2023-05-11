@@ -1,5 +1,5 @@
 import Form from "./Form.jsx";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styled, { keyframes, css } from 'styled-components';
 
 const GrootDraw = () => {
@@ -13,13 +13,32 @@ const GrootDraw = () => {
     useEffect(() => {
         if (emailFocus) {
             setTranslateValueY(8);
-            setTranslateValueX(-10);
+            setTranslateValueX(-4);
+
+            if(emailText === 1) {
+                setTranslateValueX(-3);
+            }
             
             if(emailText === 2) {
-                setTranslateValueY(15);
+                setTranslateValueX(-2);
+            }
+            if(emailText === 3) {
                 setTranslateValueX(-1);
             }
+            if(emailText === 4) {
+                setTranslateValueX(0);
+            }
+            if(emailText === 5) {
+                setTranslateValueX(1);
+            }
+            if(emailText === 6) {
+                setTranslateValueX(2);
+            }
+            if(emailText === 7) {
+                setTranslateValueX(3);
+            }
         }
+        console.log(emailText);
     }, [emailFocus, emailText, translateValueY, translateValueX]);
 
     return (
@@ -47,8 +66,10 @@ const GrootDraw = () => {
                                 translateValueY={translateValueY} />
                         </div>
 
-                        <div className="mouth">
-                            <div className="tongue"></div>
+                        <div className="mouth_container">
+                            <Mouth emailFocus={emailFocus}/* className="mouth" */>
+                                <div className="tongue"></div>
+                            </Mouth>
                         </div>
                     </div>
                 </div>
@@ -68,6 +89,27 @@ const GrootDraw = () => {
     )
 }
 
+const Mouth = styled.div`
+    width: 4rem;
+    height:  ${({ emailFocus }) => emailFocus ? "3rem" : "0.5rem"};
+    background-color: var(--dark);
+    border-radius: 35px 35px 100px 100px;
+    margin-top: 1rem;
+    position: relative;
+
+    .tongue {
+        display: ${({ emailFocus }) => emailFocus ? "block" : "none"};
+        width: 2rem;
+        height: 1rem;
+        background-color: var(--tongue);
+        border-radius: 15px 15px 50px 50px;
+        position: absolute;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+    } 
+`;
+
 const Eyes = styled.div`
     width: 2rem;
     height: 2rem;
@@ -85,13 +127,12 @@ const Eyes = styled.div`
         border-radius: 50%;
         background-color: #fff;
         animation: ${({ emailFocus, emailText, translateValueY, translateValueX }) =>
-            emailFocus && emailText === 0 ?
+            emailFocus && 
             css`
-            ${moveEyes1(translateValueY, translateValueX)} 1s var(--cubic) forwards;
-            `
-            : css`
-            ${moveEyes2(translateValueY, translateValueX)} 1s var(--cubic) forwards;
+                ${eyeAnimations[emailText](translateValueY, translateValueX)} 1s
+                var(--cubic) forwards;
             `};
+        };
     }
 `;
 
@@ -105,11 +146,64 @@ const moveEyes1 = (translateValueY, translateValueX) => keyframes`
 `;
 const moveEyes2 = (translateValueY, translateValueX) => keyframes`
     from {
-        transform: translate(-10px, 8px);
+        transform: translate(-4px, 8px);
     }
     to {
         transform: translate(${translateValueX}px, ${translateValueY}px);
     }
 `;
+
+const moveEyes3 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(-3px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+
+const moveEyes4 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(-2px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+
+const moveEyes5 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(-1px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+const moveEyes6 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(0px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+const moveEyes7 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(1px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+
+const eyeAnimations = {
+    0: moveEyes1,
+    1: moveEyes2,
+    2: moveEyes3,
+    3: moveEyes4,
+    4: moveEyes5,
+    5: moveEyes6,
+    6: moveEyes7,
+};
 
 export default GrootDraw;
