@@ -9,23 +9,18 @@ const GrootDraw = () => {
     const [passwordFocus, setPasswordFocus] = useState(false);
     const [translateValueY, setTranslateValueY] = useState(0);
     const [translateValueX, setTranslateValueX] = useState(0);
-    const [prevTranslateValueY, setPrevTranslateValueY] = useState();
-    const [prevTranslateValueX, setPrevTranslateValueX] = useState(0);
 
     useEffect(() => {
         if (emailFocus) {
             setTranslateValueY(8);
             setTranslateValueX(-10);
-
-            setPrevTranslateValueX(8);
-            setPrevTranslateValueY(10);
-            console.log(prevTranslateValueX);
+            
             if(emailText === 2) {
                 setTranslateValueY(15);
                 setTranslateValueX(-1);
             }
         }
-    }, [emailFocus, emailText, prevTranslateValueY, prevTranslateValueX, translateValueY, translateValueX]);
+    }, [emailFocus, emailText, translateValueY, translateValueX]);
 
     return (
         <>
@@ -44,14 +39,10 @@ const GrootDraw = () => {
                         <div className="eyes">
                             <Eyes emailText={emailText}
                                 emailFocus={emailFocus}
-                                prevTranslateValueX={prevTranslateValueX}
-                                prevTranslateValueY={prevTranslateValueY}
                                 translateValueX={translateValueX}
                                 translateValueY={translateValueY} />
                             <Eyes emailText={emailText}
                                 emailFocus={emailFocus}
-                                prevTranslateValueX={prevTranslateValueX}
-                                prevTranslateValueY={prevTranslateValueY}
                                 translateValueX={translateValueX}
                                 translateValueY={translateValueY} />
                         </div>
@@ -87,16 +78,19 @@ const Eyes = styled.div`
     &::after {
         content: "";
         position: absolute;
-        top: ${({prevTranslateValueY}) => prevTranslateValueY > 0 ? `${prevTranslateValueY}px` : "10px"};
-        right: ${({prevTranslateValueX}) => prevTranslateValueX > 0 ? `${prevTranslateValueX}px` : "10px"};
+        top: 10px;
+        right: 10px;
         width: 9px;
         height: 9px;
         border-radius: 50%;
         background-color: #fff;
-        animation: ${({ emailFocus, translateValueY, translateValueX }) =>
-            emailFocus &&
+        animation: ${({ emailFocus, emailText, translateValueY, translateValueX }) =>
+            emailFocus && emailText === 0 ?
             css`
             ${moveEyes1(translateValueY, translateValueX)} 1s var(--cubic) forwards;
+            `
+            : css`
+            ${moveEyes2(translateValueY, translateValueX)} 1s var(--cubic) forwards;
             `};
     }
 `;
@@ -104,6 +98,14 @@ const Eyes = styled.div`
 const moveEyes1 = (translateValueY, translateValueX) => keyframes`
     from {
         transform: translate(0px, 0px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+const moveEyes2 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(-10px, 8px);
     }
     to {
         transform: translate(${translateValueX}px, ${translateValueY}px);
