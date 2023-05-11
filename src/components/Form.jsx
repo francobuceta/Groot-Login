@@ -8,6 +8,10 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) =>
         setEmailFocus(true);
     }
 
+    const emailBlurFn = () => {
+        setEmailFocus(false);
+    }
+
     const passwordHandler = () => {
         setPasswordFocus(true);
         console.log(passwordFocus);
@@ -19,7 +23,7 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) =>
                 <div className="form_input-container">
                     <label htmlFor="email">Email</label>
                     <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} 
-                        onFocus={emailFocusFn} />
+                        onFocus={emailFocusFn} onBlur={emailBlurFn}/>
                 </div>
                 <div className="form_input-container">
                     <label htmlFor="password">Password</label>

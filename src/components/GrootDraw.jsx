@@ -15,7 +15,7 @@ const GrootDraw = () => {
             setTranslateValueY(8);
             setTranslateValueX(-4);
 
-            if(emailText === 1) {
+            if(emailText === 0 || emailText === 1) {
                 setTranslateValueX(-3);
             }
             
@@ -37,8 +37,16 @@ const GrootDraw = () => {
             if(emailText === 7) {
                 setTranslateValueX(3);
             }
+            if(emailText === 8) {
+                setTranslateValueX(4);
+            } 
+            if(emailText > 8) {
+                setTranslateValueX(4);
+            } 
+        } else {
+            setTranslateValueY(0);
+            setTranslateValueX(0);
         }
-        console.log(emailText);
     }, [emailFocus, emailText, translateValueY, translateValueX]);
 
     return (
@@ -127,11 +135,16 @@ const Eyes = styled.div`
         border-radius: 50%;
         background-color: #fff;
         animation: ${({ emailFocus, emailText, translateValueY, translateValueX }) =>
-            emailFocus && 
+            emailFocus && emailText < 9 ?
             css`
                 ${eyeAnimations[emailText](translateValueY, translateValueX)} 1s
                 var(--cubic) forwards;
-            `};
+            `
+            :
+            css`
+                ${eyeAnimations[8](translateValueY, translateValueX)} 1s
+                var(--cubic) forwards;
+            `
         };
     }
 `;
@@ -195,6 +208,22 @@ const moveEyes7 = (translateValueY, translateValueX) => keyframes`
         transform: translate(${translateValueX}px, ${translateValueY}px);
     }
 `;
+const moveEyes8 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(2px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
+const moveEyes9 = (translateValueY, translateValueX) => keyframes`
+    from {
+        transform: translate(3px, 8px);
+    }
+    to {
+        transform: translate(${translateValueX}px, ${translateValueY}px);
+    }
+`;
 
 const eyeAnimations = {
     0: moveEyes1,
@@ -204,6 +233,8 @@ const eyeAnimations = {
     4: moveEyes5,
     5: moveEyes6,
     6: moveEyes7,
+    7: moveEyes8,
+    8: moveEyes9
 };
 
 export default GrootDraw;
