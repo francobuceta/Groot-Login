@@ -14,35 +14,19 @@ const GrootDraw = () => {
         if (emailFocus) {
             setTranslateValueY(8);
             setTranslateValueX(-4);
-
+            
             if(emailText === 0 || emailText === 1) {
                 setTranslateValueX(-3);
             }
+            emailText === 2 && setTranslateValueX(-2);
+            emailText === 3 && setTranslateValueX(-1);
+            emailText === 4 && setTranslateValueX(0);
+            emailText === 5 && setTranslateValueX(1);
+            emailText === 6 && setTranslateValueX(2);
+            emailText === 7 && setTranslateValueX(3);
+            emailText === 8 && setTranslateValueX(4);
+            emailText > 8 && setTranslateValueX(4);
             
-            if(emailText === 2) {
-                setTranslateValueX(-2);
-            }
-            if(emailText === 3) {
-                setTranslateValueX(-1);
-            }
-            if(emailText === 4) {
-                setTranslateValueX(0);
-            }
-            if(emailText === 5) {
-                setTranslateValueX(1);
-            }
-            if(emailText === 6) {
-                setTranslateValueX(2);
-            }
-            if(emailText === 7) {
-                setTranslateValueX(3);
-            }
-            if(emailText === 8) {
-                setTranslateValueX(4);
-            } 
-            if(emailText > 8) {
-                setTranslateValueX(4);
-            } 
         } else {
             setTranslateValueY(0);
             setTranslateValueX(0);
