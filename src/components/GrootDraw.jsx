@@ -63,14 +63,19 @@ const GrootDraw = () => {
 
                 <div className="head">
                     <div className="leaf_container">
-                        <Branch>
-                            <Leaf></Leaf>
-                            <Leaf></Leaf>
-                        </Branch>
-                        <Branch>
-                            <Leaf></Leaf>
-                            <Leaf></Leaf>
-                        </Branch>
+                        {
+                            passwordFocus && 
+                            <>
+                                <Branch>
+                                    <Leaf></Leaf>
+                                    <Leaf></Leaf>
+                                </Branch>
+                                <Branch>
+                                    <Leaf></Leaf>
+                                    <Leaf></Leaf>
+                                </Branch>
+                            </>
+                        }
                     </div>
                     <div className="face">
                         <div className="eyes">
@@ -85,7 +90,7 @@ const GrootDraw = () => {
                         </div>
 
                         <div className="mouth_container">
-                            <Mouth emailFocus={emailFocus}/* className="mouth" */>
+                            <Mouth emailFocus={emailFocus}>
                                 <div className="tongue"></div>
                             </Mouth>
                         </div>
@@ -102,7 +107,7 @@ const GrootDraw = () => {
                 </div>
             </section>
 
-            <Form setEmailText={setEmailText} passwordFocus={passwordFocus} setPasswordFocus={setPasswordFocus} setEmailFocus={setEmailFocus} />
+            <Form setEmailText={setEmailText} setPasswordFocus={setPasswordFocus} setEmailFocus={setEmailFocus} />
         </>
     )
 }
@@ -268,11 +273,21 @@ const leafEvenGrow = () => keyframes`
     }
 `;
 
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }  
+    to {
+        opacity: 1;
+    }
+`;
+
 const Branch = styled.div`
     position: absolute;
     width: 8px;
     border-radius: 25px;
     background: linear-gradient(to right, #7f3333, #4d2020);
+    animation: ${fadeIn} 1s ease-in-out;
     &:nth-child(1) {
 		top: 60px;
 		right: 40px;
@@ -297,20 +312,20 @@ const Leaf = styled.div`
     background: linear-gradient(to right, #77ed9e, #53ad71);
     &:nth-child(1) {
 		top: 2px;
-		animation-delay: 3.5s;
+		animation-delay: 1.5s;
 		left: 100%;
 		transform-origin: 0% 100%;
 		animation-name: ${leafOddGrow};
-		animation-duration: 4s;
+		animation-duration: 1s;
 		animation-fill-mode: both;
 	}
     &:nth-child(2) {
 		top: 10px;
-		animation-delay: 3s;
+		animation-delay: 1s;
 		left: -150%;
 		transform-origin: 50% 100%;
 		animation-name: ${leafEvenGrow};
-		animation-duration: 4s;
+		animation-duration: 1s;
 		animation-fill-mode: both;
 	}
 `;

@@ -1,4 +1,4 @@
-const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) => {
+const Form = ({setEmailText, setPasswordFocus, setEmailFocus}) => {
 
     const emailHandler = (e) => {
         setEmailText(e.target.value.length);
@@ -12,9 +12,12 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) =>
         setEmailFocus(false);
     }
 
-    const passwordHandler = () => {
+    const passwordFocusFn = () => {
         setPasswordFocus(true);
-        console.log(passwordFocus);
+    }
+
+    const passwordBlurFn = () => {
+        setPasswordFocus(false);
     }
 
     return (
@@ -27,7 +30,8 @@ const Form = ({setEmailText, passwordFocus, setPasswordFocus, setEmailFocus}) =>
                 </div>
                 <div className="form_input-container">
                     <label htmlFor="password">Password</label>
-                    <input type="text" name="password" className="form_input" onFocus={passwordHandler} />
+                    <input type="text" name="password" className="form_input" onFocus={passwordFocusFn} 
+                        onBlur={passwordBlurFn}/>
                 </div>
 
                 <div>
