@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+
 const Form = ({setEmailText, setPasswordFocus, setEmailFocus}) => {
+
+    const [showPassword, setShowPassword] = useState(false);
 
     const emailHandler = (e) => {
         setEmailText(e.target.value.length);
@@ -20,18 +25,32 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus}) => {
         setPasswordFocus(false);
     }
 
+    const showPasswordFn = () => {
+        setShowPassword(!showPassword);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
     return (
-        <section className="form_container">
+        <section className="form_container" onSubmit={(e) => handleSubmit(e)}>
             <form action="" className="form">
                 <div className="form_input-container">
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} 
+                    <input type="text" name="email" className="form_input margin_input" onChange={(e) => emailHandler(e)} 
                         onFocus={emailFocusFn} onBlur={emailBlurFn}/>
                 </div>
                 <div className="form_input-container">
                     <label htmlFor="password">Password</label>
-                    <input type="text" name="password" className="form_input" onFocus={passwordFocusFn} 
+                    <input type={showPassword ? "text" : "password"} name="password" className="form_input" 
+                        onFocus={passwordFocusFn} 
                         onBlur={passwordBlurFn}/>
+                    {
+                        showPassword 
+                        ? <AiFillEye onClick={showPasswordFn} className="eye_icon" />
+                        : <AiFillEyeInvisible onClick={showPasswordFn} className="eye_icon" />
+                    }
                 </div>
 
                 <div>

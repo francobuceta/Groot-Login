@@ -9,6 +9,7 @@
 
 html {
 	box-sizing: border-box;
+	font-family:'Space Grotesk', sans-serif;;
 }
 
 body {
@@ -42,76 +43,6 @@ body {
 
 	.leaf_container {
 		position: relative;
-	}
-
-	@keyframes leaf-odd-grow {
-		0% {
-			transform: scale(0);
-		}
-
-		100% {
-			transform: scale(1);
-		}
-	}
-
-	@keyframes leaf-even-grow {
-		0% {
-			transform: rotate(-90deg) scale(0);
-		}
-
-		100% {
-			transform: rotate(-90deg) scale(1);
-		}
-	}
-
-	.branch {
-		position: absolute;
-		width: 8px;
-		border-radius: 25px;
-		background: linear-gradient(to right, #7f3333, #4d2020);
-	}
-
-	.branch:nth-child(1) {
-		top: 60px;
-		right: 40px;
-		height: 100px;
-		z-index: 20;
-		transform: rotate(-60deg);
-	}
-	.branch:nth-child(2) {
-		top: 90px;
-		left: 40px;
-		height: 100px;
-		z-index: 20;
-		transform: rotate(60deg);
-	}
-
-	.leaf {
-		position: absolute;
-		width: 35px;
-		height: 35px;
-		border-radius: 75% 0 75% 0;
-		background: linear-gradient(to right, #77ed9e, #53ad71);
-	}
-	
-	.leaf:nth-child(1) {
-		top: 2px;
-		animation-delay: 3.5s;
-		left: 100%;
-		transform-origin: 0% 100%;
-		animation-name: leaf-odd-grow;
-		animation-duration: 4s;
-		animation-fill-mode: both;
-	}
-
-	.leaf:nth-child(2) {
-		top: 10px;
-		animation-delay: 3s;
-		left: -150%;
-		transform-origin: 50% 100%;
-		animation-name: leaf-even-grow;
-		animation-duration: 4s;
-		animation-fill-mode: both;
 	}
 
 }
@@ -264,24 +195,6 @@ body {
 }
 
 
-// eyes animation
-@keyframes moveEyes {
-	0% {
-		transform: translatey(0px);
-		transform: translatex(0px);
-	}
-
-	50% {
-		transform: translatey(8px);
-		transform: translatex(8px);
-	}
-
-	100% {
-		transform: translatex(8px);
-	}
-}
-
-
 //Formulario
 
 .form_container {
@@ -328,17 +241,29 @@ body {
 				padding: 5px;
 				font-family: 'Inter', sans-serif;
 			}
+
+			.eye_icon {
+				cursor: pointer;
+				font-size: 2rem;
+			}
 		}
 
 		.form_submit {
-			width: 100%;
-			max-width: 90px;
+			width: 110px;
 			padding: 10px;
 			border-radius: 5px;
 			color: white;
-			background-color: #639;
+			background-color: black;
 			border: none;
 			cursor: pointer;
+			font-weight: 700;
+			font-size: 16px;
 		}
 	}
+
+	
+}
+
+.margin_input {
+	margin-right: 25px;
 }
