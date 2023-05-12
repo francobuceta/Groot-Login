@@ -62,6 +62,16 @@ const GrootDraw = () => {
                 </div>
 
                 <div className="head">
+                    <div className="leaf_container">
+                        <Branch>
+                            <Leaf></Leaf>
+                            <Leaf></Leaf>
+                        </Branch>
+                        <Branch>
+                            <Leaf></Leaf>
+                            <Leaf></Leaf>
+                        </Branch>
+                    </div>
                     <div className="face">
                         <div className="eyes">
                             <Eyes emailText={emailText}
@@ -104,6 +114,7 @@ const Mouth = styled.div`
     border-radius: 35px 35px 100px 100px;
     margin-top: 1rem;
     position: relative;
+    transition: all 0.3s;
 
     .tongue {
         display: ${({ emailFocus }) => emailFocus ? "block" : "none"};
@@ -236,5 +247,72 @@ const eyeAnimations = {
     7: moveEyes8,
     8: moveEyes9
 };
+
+const leafOddGrow = () => keyframes`
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+`;
+
+const leafEvenGrow = () => keyframes`
+    0% {
+        transform: rotate(-90deg) scale(0);
+    }
+
+    100% {
+        transform: rotate(-90deg) scale(1);
+    }
+`;
+
+const Branch = styled.div`
+    position: absolute;
+    width: 8px;
+    border-radius: 25px;
+    background: linear-gradient(to right, #7f3333, #4d2020);
+    &:nth-child(1) {
+		top: 60px;
+		right: 40px;
+		height: 100px;
+		z-index: 20;
+		transform: rotate(-60deg);
+	}
+    &:nth-child(2) {
+		top: 90px;
+		left: 40px;
+		height: 100px;
+		z-index: 20;
+		transform: rotate(60deg);
+	}
+`;
+
+const Leaf = styled.div`
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 75% 0 75% 0;
+    background: linear-gradient(to right, #77ed9e, #53ad71);
+    &:nth-child(1) {
+		top: 2px;
+		animation-delay: 3.5s;
+		left: 100%;
+		transform-origin: 0% 100%;
+		animation-name: ${leafOddGrow};
+		animation-duration: 4s;
+		animation-fill-mode: both;
+	}
+    &:nth-child(2) {
+		top: 10px;
+		animation-delay: 3s;
+		left: -150%;
+		transform-origin: 50% 100%;
+		animation-name: ${leafEvenGrow};
+		animation-duration: 4s;
+		animation-fill-mode: both;
+	}
+`;
 
 export default GrootDraw;
