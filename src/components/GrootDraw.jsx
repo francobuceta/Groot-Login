@@ -1,6 +1,6 @@
 import Form from "./Form.jsx";
 import { useState, useEffect } from "react";
-import { Mouth, Eyes, Branch, Leaf } from "../styles/styledComponets.js";
+import { Mouth, Eyes, Branch, Leaf } from "../styles/styledComponents.js";
 
 const GrootDraw = () => {
 
@@ -26,12 +26,12 @@ const GrootDraw = () => {
             emailText === 7 && setTranslateValueX(3);
             emailText === 8 && setTranslateValueX(4);
             emailText > 8 && setTranslateValueX(4);
-            
+
         } else {
             setTranslateValueY(0);
             setTranslateValueX(0);
         }
-    }, [emailFocus, emailText, translateValueY, translateValueX]);
+    }, [emailFocus, emailText]);
 
     return (
         <>
