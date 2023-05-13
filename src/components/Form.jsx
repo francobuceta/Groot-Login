@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import grootSound from "../assets/i_am_groot.mp3";
 
 const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => {
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const playGrootSound = () => {
+        new Audio(grootSound).play();
+    }
 
     const emailHandler = (e) => {
         setEmailText(e.target.value.length);
@@ -11,6 +16,7 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => 
     
     const emailFocusFn = () => {
         setEmailFocus(true);
+        playGrootSound();
     }
 
     const emailBlurFn = () => {
@@ -32,6 +38,7 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => 
     const handleSubmit = (e) => {
         e.preventDefault();
         setSubmitted(true);
+        window.scrollTo(0, 0);
     }
 
     return (

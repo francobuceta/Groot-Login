@@ -1,6 +1,8 @@
 import Form from "./Form.jsx";
 import { useState, useEffect } from "react";
 import { Mouth, Eyes, Branch, Leaf } from "../styles/styledComponents.js";
+import image from "../assets/image2.jpg";
+import music from "../assets/Come_and_get_your_love.mp3";
 
 const GrootDraw = () => {
 
@@ -10,6 +12,17 @@ const GrootDraw = () => {
     const [translateValueY, setTranslateValueY] = useState(0);
     const [translateValueX, setTranslateValueX] = useState(0);
     const [submitted, setSubmitted] = useState(false);
+
+    const audio = new Audio(music);
+
+    const playMusic = () => {
+        audio.play();
+    }
+
+    const goBack = () => {
+        setSubmitted(false);
+        audio.pause();
+    }
 
     useEffect(() => {
         if (emailFocus) {
@@ -32,7 +45,10 @@ const GrootDraw = () => {
             setTranslateValueY(0);
             setTranslateValueX(0);
         }
-    }, [emailFocus, emailText]);
+
+        submitted === true && playMusic();
+
+    }, [emailFocus, emailText, submitted]);
 
     return (
         <>
@@ -103,7 +119,12 @@ const GrootDraw = () => {
                     </>
                 )
                 :
-                <img src="hola" alt="hola" />
+                <div className="image_container">
+                    <img src={image} alt="hola" className="image-effect" />
+                    <div className="button_container">
+                        <button className="button" onClick={goBack}>Volver</button>
+                    </div>
+                </div>
             }
 
         </>
