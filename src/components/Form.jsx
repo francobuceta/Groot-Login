@@ -45,17 +45,12 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => 
         <section className="form_container" onSubmit={(e) => handleSubmit(e)}>
             <form action="" className="form">
                 <div className="form_input-container">
-                    <div className="label_cont">
-                        <label htmlFor="email">Email</label>
-                    </div>
+                    <label htmlFor="email">Email</label>
                     <input type="text" name="email" className="form_input margin_input" onChange={(e) => emailHandler(e)} 
                         onFocus={emailFocusFn} onBlur={emailBlurFn} required/>
                 </div>
                 <div className="form_input-container">
-                    <div className="label_cont">
-                        <label htmlFor="password">Password</label>
-                    </div>
-                    
+                    <label htmlFor="password">Password</label>
                     <input type={showPassword ? "text" : "password"} name="password" className="form_input" 
                         onFocus={passwordFocusFn} 
                         onBlur={passwordBlurFn}

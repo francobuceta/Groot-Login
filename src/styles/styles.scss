@@ -229,15 +229,11 @@ body {
 			justify-content: center;
 			gap: 10px;
 
-			.label_cont {
-				width: 100px;
-			}
-
 			label {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				/* width: 100px; */
+				width: 100px;
 			}
 
 			.form_input {
@@ -345,13 +341,9 @@ body {
 
 @media (max-width: 405px) {
 	label {
-		
+		width: 10px;
 		font-size: 12px;
 		font-weight: bold;
-	}
-
-	.label_cont {
-		width: 10px;
 	}
 
 	.form_submit {
