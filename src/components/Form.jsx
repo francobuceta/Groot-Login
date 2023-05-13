@@ -47,7 +47,7 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => 
                 <div className="form_input-container">
                     <label htmlFor="email">Email</label>
                     <input type="text" name="email" className="form_input margin_input" onChange={(e) => emailHandler(e)} 
-                        onFocus={emailFocusFn} onBlur={emailBlurFn} required/>
+                        onFocus={emailFocusFn} onBlur={emailBlurFn} autoComplete="off" required/>
                 </div>
                 <div className="form_input-container">
                     <label htmlFor="password">Password</label>
