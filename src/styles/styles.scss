@@ -208,20 +208,20 @@ body {
 	align-items: center;
 	position: absolute;
 	z-index: 20;
-	top: 190px;
+	top: 11.875rem;
 
 	.form {
-		height: 150px;
+		height: 9.375rem;
 		width: 100%;
-		max-width: 400px;
+		max-width: 25rem;
 		background-color: #d8ccc0;
-		padding: 25px;
+		padding: 1.563rem;
 		border-radius: 10px;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.75);
-		padding-bottom: 40px;
+		padding-bottom: 2.5rem;
 
 		.form_input-container {
 			display: flex;
@@ -233,17 +233,17 @@ body {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				width: 100px;
+				width: 6.25rem;
 			}
 
 			.form_input {
 				width: 100%;
-				max-width: 200px;
-				margin-bottom: 12px;
-				height: 40px;
+				max-width: 12.5rem;
+				margin-bottom: 0.75rem;
+				height: 2.5rem;
 				border-radius: 5px;
 				border: 2px solid var(--dark-brown);
-				padding: 5px;
+				padding: 0.313rem;
 				font-family: 'Inter', sans-serif;
 				background-color: #e9e6e3;
 
@@ -260,22 +260,22 @@ body {
 		}
 
 		.form_submit {
-			width: 110px;
-			padding: 10px;
+			width: 6.875rem;
+			padding: 0.652rem;
 			border-radius: 5px;
 			color: white;
 			background-color: rgb(26, 25, 25);
 			border: none;
 			cursor: pointer;
 			font-weight: 700;
-			font-size: 16px;
+			font-size: 1rem;
 			font-family: 'Space Grotesk', sans-serif;
 		}
 	}
 }
 
 .margin_input {
-	margin-right: 25px;
+	margin-right: 1.563rem;
 }
 
 .image_container {
@@ -341,16 +341,16 @@ body {
 
 @media (max-width: 600px) {
 	label {
-		width: 10px;
-		font-size: 12px;
+		width: 0.652rem;
+		font-size: 0.75rem;
 		font-weight: bold;
 	}
 
 	.form_submit {
-		font-size: 12px !important;
+		font-size: 0.75rem!important;
 	}
 
 	.margin_input {
-		margin-right: 2.313rem;
+		margin-right: 2.188rem;
 	}
 }
