@@ -275,7 +275,7 @@ body {
 }
 
 .margin_input {
-	margin-right: 1.563rem;
+	margin-right: 1.688rem;
 }
 
 .image_container {
@@ -350,7 +350,14 @@ body {
 		font-size: 0.75rem!important;
 	}
 
+	.form_input-container {
+		.eye_icon {
+			cursor: pointer;
+			font-size: 1.5rem!important;
+		}
+	}
+	
 	.margin_input {
-		margin-right: 2.188rem;
+		margin-right: 1.375rem;
 	}
 }
