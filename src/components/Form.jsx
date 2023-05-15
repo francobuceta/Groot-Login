@@ -46,8 +46,9 @@ const Form = ({setEmailText, setPasswordFocus, setEmailFocus, setSubmitted}) => 
             <form action="" className="form">
                 <div className="form_input-container">
                     <label htmlFor="email">Email</label>
-                    <input type="text" name="email" className="form_input margin_input" onChange={(e) => emailHandler(e)} 
+                    <input type="text" name="email" className="form_input" onChange={(e) => emailHandler(e)} 
                         onFocus={emailFocusFn} onBlur={emailBlurFn} autoComplete="off" required/>
+                    <AiFillEyeInvisible onClick={showPasswordFn} className="eye_icon disabled" />
                 </div>
                 <div className="form_input-container">
                     <label htmlFor="password">Password</label>

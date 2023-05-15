@@ -257,6 +257,10 @@ body {
 				cursor: pointer;
 				font-size: 2rem;
 			}
+
+			.disabled {
+				visibility: hidden;
+			}
 		}
 
 		.form_submit {
@@ -272,10 +276,6 @@ body {
 			font-family: 'Space Grotesk', sans-serif;
 		}
 	}
-}
-
-.margin_input {
-	margin-right: 1.688rem;
 }
 
 .image_container {
@@ -355,9 +355,5 @@ body {
 			cursor: pointer;
 			font-size: 1.5rem!important;
 		}
-	}
-	
-	.margin_input {
-		margin-right: 1.375rem;
 	}
 }
